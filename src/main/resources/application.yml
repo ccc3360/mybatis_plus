@@ -19,6 +19,9 @@ mybatis-plus:
       logic-delete-field: deleted
       logic-not-delete-value: 0
       logic-delete-value: 1
+      table-prefix: t_
+  type-enums-package: com.example.enums
+  type-aliases-package: com.example.domain
 # 应用服务 WEB 访问端口
 ---
 #开发

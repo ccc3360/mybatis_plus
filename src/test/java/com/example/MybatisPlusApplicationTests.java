@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.Service.UserService;
 import com.example.domain.User;
+import com.example.enums.SexEnum;
 import com.example.mapper.UserMapper;
+import org.apache.ibatis.logging.stdout.StdOutImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -75,8 +77,20 @@ class MybatisPlusApplicationTests {
         user2.setAge(user2.getAge()+2);
         userMapper.updateById(user2);
 
+
         System.out.println(userMapper.selectById(1L).getAge());
 
+
+    }
+
+    @Test
+    public void Enumdemo(){
+        User user=new User();
+        user.setName("admin");
+        user.setAge(18);
+        user.setSex(SexEnum.MALE);
+        int insert = userMapper.insert(user);
+        System.out.println(insert);
 
     }
 
