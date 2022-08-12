@@ -1,5 +1,6 @@
 package com.example.config;
 
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
@@ -16,7 +17,7 @@ public class MpConfig {
 
 //        2、在mp拦截器中添加具体的拦截器
 //           分页拦截器
-        mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor());
+        mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
 
 //           乐观锁拦截器
         mybatisPlusInterceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());

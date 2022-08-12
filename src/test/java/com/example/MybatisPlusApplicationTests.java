@@ -2,6 +2,7 @@ package com.example;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.Service.UserService;
 import com.example.domain.User;
 import com.example.mapper.UserMapper;
@@ -55,6 +56,28 @@ class MybatisPlusApplicationTests {
         QueryWrapper<User> queryWrapper=new QueryWrapper<>();
         queryWrapper.like("name","a")
                 .and(i->i.gt("age",20).or().isNull("email"));
+    }
+
+    @Test
+    public void testPage(){
+        Page<User> page=new Page<>(1,3);
+        Page<User> userPage = userMapper.selectPage(page, null);
+        System.out.println(userPage);
+    }
+    @Test
+    public void version01(){
+        User user=userMapper.selectById(1L);
+        System.out.println("一号"+user.getAge());
+        User user2=userMapper.selectById(1L);
+        System.out.println("一号"+user2.getAge());
+        user.setAge(user.getAge()+1);
+        userMapper.updateById(user);
+        user2.setAge(user2.getAge()+2);
+        userMapper.updateById(user2);
+
+        System.out.println(userMapper.selectById(1L).getAge());
+
+
     }
 
 }
