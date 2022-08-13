@@ -3,6 +3,7 @@ package com.example;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.Service.ProductService;
 import com.example.Service.UserService;
 import com.example.domain.User;
 import com.example.enums.SexEnum;
@@ -92,6 +93,13 @@ class MybatisPlusApplicationTests {
         int insert = userMapper.insert(user);
         System.out.println(insert);
 
+    }
+    @Autowired
+    private ProductService productService;
+    @Test
+    public void dynamictest(){
+        System.out.println(userService.getById(1));
+        System.out.println(productService.getById(1));
     }
 
 }
